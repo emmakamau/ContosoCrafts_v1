@@ -5,10 +5,17 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Hey Emma</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Contoso Crafts</h1>
 </div>
-@foreach(var product in Model.Products)
-{
-    <h2>@product.Title</h2>
-}
+
+<div class="card-columns row d-flex justify-content-center">
+    @foreach(var product in Model.Products)
+    {
+        <div class="card col-4 m-3">
+            <div class="card-img" style="background-image:url('@product.Image');"></div>
+            <div class="card-body">
+                <h5 class="card-title text-center">@product.Title</h5>
+            </div>
+        </div>
+    }
+</div>
