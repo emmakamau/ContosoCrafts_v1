@@ -11,6 +11,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddTransient<JsonFileProductService>();
 //Add API controller
 builder.Services.AddControllers();
+//Add Blazor components
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -31,6 +33,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+app.MapBlazorHub();
 
 //One way to return json data - API
 /*app.MapGet("/products", context =>
