@@ -18,6 +18,7 @@ namespace ContosoCrafts.services
 
         //Retrives product items from our Json file - Deserializing to make our product instances
 
+        //List that we can be able to foreach
         public IEnumerable<Product> GetProducts()
         {
             using var jsonFileReader = File.OpenText(JsonFileName);
