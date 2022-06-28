@@ -1,4 +1,5 @@
 using ContosoCrafts.services;
+using ContosoCrafts.controllers;
 using ContosoCrafts.WebSite.Models;
 using System.Text.Json;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 //Add JsonFileProductService
 builder.Services.AddTransient<JsonFileProductService>();
+//Add API controller
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -27,11 +30,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapGet("/products", context =>
+app.MapControllers();
+
+//One way to return json data - API
+/*app.MapGet("/products", context =>
 {
     var products = app.Services.GetService<JsonFileProductService>().GetProducts();
     var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
     return context.Response.WriteAsync(json);
-});
+});*/
 
 app.Run();
