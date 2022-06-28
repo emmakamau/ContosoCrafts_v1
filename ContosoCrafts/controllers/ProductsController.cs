@@ -20,5 +20,15 @@ namespace ContosoCrafts.controllers
         {
             return ProductService.GetProducts();
         }
+
+        [Route("Rate")] //Subroute => /api/Products/rate?PproductId=jenlooper-cactus&Rating=4
+        [HttpGet]
+        public ActionResult Get(
+            [FromQuery]string ProductId, 
+            [FromQuery]int Rating)
+        {
+            ProductService.AddRating(ProductId, Rating);
+            return Ok();
+        }
     }
 }
